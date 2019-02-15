@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+    <title>Mars</title>
+  </head>
+  <body>
+<!-- custom styles-->
+<link rel="stylesheet" href="custom.css">
+
+    <div class='container'>
+      <h1 class='text-light'>"I don't want to go to Saturn, I want to go to MARS."</h1>
+      <h2 class='text-light'> - Douglas Quaid</h2>
+    
+    <!-- add scrape functionality to bootstrap page -->
+    <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Start the Reactor</a></p>
+    </div>
+    <!-- Mars News -->
+    <div class="row">
+      <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">Latest News From the Red Planet</h5>
+            <h3 class="card-subtitle mb-2"> {{total_scrape_dict.news_title}} </h3>
+            <p class="card-text">{{total_scrape_dict.news_text}}</p>
+          </div>
+      </div>
+</div>
+<!-- mars facts -->
+<div class="row">
+  <div class="col-sm-4">
+    <h5 class="card-title">Facts About Mars</h5>
+    {{total_scrape_dict.mars_facts | safe}}
+  </div>
+
+
+  <!-- featured martian image -->
+  <div class="col-sm-4">
+    <h5 class="card-title">Featured Martian Image</h5>
+    <img src=" {{total_scrape_dict.featured_image_url}} " width="300" height="300">
+  </div>
+
+    <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">Today's Martian Weather</div>
+            <div class="panel-body">
+              <p class="card-text"> {{total_scrape_dict.current_weather}} </p>
+            </div>
+          </div>
+        
+   </div>
+</div>
+
+<!-- hemispheres dictionary -->
+{% for hemisphere in total_scrape_dict.hemisphere_image_urls %}
+<div class="panel panel-default">
+<div class="panel-heading">{{hemisphere.title}}</div>
+<div class="panel-body">
+    <img class="img-responsive" src="{{hemisphere_image_urls.image_url}}" width="300" height="300" class="img-rounded" id="Panel_Image">
+</div>
+</div>
+{% endfor %}
+
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+  </body>
+</html>
